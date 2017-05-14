@@ -6,6 +6,9 @@ def count_words(test_file):
 
     list_of_words = []  # Create an empty list to store lists of [word, word count]
     dict_of_words = {}  # Create a dictionary to store word : word count pairs
+    dict_in_order = {}  # Create a dictionary to store elements in order
+    word_max=0
+    count_max=0
 
     for line in data:
         line = line.rstrip()
@@ -20,10 +23,23 @@ def count_words(test_file):
         #get function has two situation
         #if word exist in dictionary, value++
         #if not, add word in list and give it value of 0
+    for i in range(1000000):
+        for word, count in dict_of_words.items():
+            #item function produces two variable 
+            if count>count_max:
+                count_max=count
+                word_max=word
+        if count_max==0:
+            break #
 
-    for word, count in dict_of_words.items():
-        #item function produces two variable 
-        print word, count
+        print word_max, count_max #print out the word that appear the most frequently
+        dict_of_words[word_max]=0 #change the value into 0 so the loop can find out the second word,count
+        word_max=0
+        count_max=0
 
+  #  for word,count in dict_in_order.item():
+#     print word,count
+        #dict_of_words remove xxx
+        #print word, count
 
 count_words("test.txt")
